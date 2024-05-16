@@ -65,7 +65,18 @@ Dans le répertoire /sys/class, on a :
 Pour configurer les leds, il faut lier le carte VEEK par minicom, ensuite on peut changer l'état de leds par terminal (0 étaint, 1 allume):
 ![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/8a90d248-5184-4b8f-a59a-0d9ef53bd038)
 
+1.4.3 Hello world 
+D'abord, il faut choisir le "Dossiers partagés" dans le bon source par "Configuration" de VM. Ensuite "cd src/", "ls" et on peut voir notre fichier "hello.c", puis en utilisant le command "arm-linux-gnueabihf-gcc hello.c -o hello.o", le hello.c est bien compilé. On peut voir le fichier "hello.o" a été créé automatiquement.
 
+Après complication, on utilise "scp hello.o root@192.168.88.55:~/" pour copier le fichier hello.o sur la carte VEEK. Puis "./hello.o" sur terminal pour éxcuter le programme hello.c. Le résultat est :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/d4bb0ab6-33ff-4106-8531-596e8c4d3388)
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/87d9fda6-aab2-4744-a9f9-f7154462675f)
+
+1.4.4 Accès au matériel
+On a fait dans la partie 1.4.1.
+
+1.4.5 Chenillard 
+On le fait led.c et réalsé correcetment.
 
 
 
