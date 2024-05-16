@@ -62,6 +62,8 @@ iomem :
 — /proc/device-tree/sopc@0 à comparer avec le fichier iomem
 Dans le répertoire /sys/class, on a :
 ![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/90b49c9c-728c-404a-9f79-9859243ffae2)
+Pour configurer les leds, il faut lier le carte VEEK par minicom, ensuite on peut changer l'état de leds par terminal (0 étaint, 1 allume):
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/8a90d248-5184-4b8f-a59a-0d9ef53bd038)
 
 
 
