@@ -66,7 +66,8 @@ Pour configurer les leds, il faut lier le carte VEEK par minicom, ensuite on peu
 ![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/8a90d248-5184-4b8f-a59a-0d9ef53bd038)
 
 1.4.3 Hello world 
-D'abord, il faut choisir le "Dossiers partagés" dans le bon source par "Configuration" de VM. Ensuite "cd src/", "ls" et on peut voir notre fichier "hello.c", puis en utilisant le command "arm-linux-gnueabihf-gcc hello.c -o hello.o", le hello.c est bien compilé. On peut voir le fichier "hello.o" a été créé automatiquement.
+D'abord, il faut choisir le "Dossiers partagés" dans le bon source par "Configuration" de VM. Ensuite "pwd" pour savoir ou l'on se situe puis "cd src/"(car le point de montage est : src, comme dans la photo ci-dessous), "ls" et on peut voir notre fichier "hello.c", puis en utilisant le command "arm-linux-gnueabihf-gcc hello.c -o hello.o", le hello.c est bien compilé. On peut voir le fichier "hello.o" a été créé automatiquement.
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/5e03ee07-c733-4a01-a652-cd9d209199c6)
 
 Après complication, on utilise "scp hello.o root@192.168.88.55:~/" pour copier le fichier hello.o sur la carte VEEK. Puis "./hello.o" sur terminal pour éxcuter le programme hello.c. Le résultat est :
 ![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/d4bb0ab6-33ff-4106-8531-596e8c4d3388)
@@ -77,6 +78,30 @@ On a fait dans la partie 1.4.1.
 
 1.4.5 Chenillard 
 On le fait led.c et réalsé correcetment.
+
+2 Modules kernel (TP2)
+2.1 Accès aux registres
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/9904fe4c-63ec-4386-bb82-f0cf1fa5fd10)
+On voit que le LED8 s'allume.
+Problèmes et limites : 
+
+2.2 Compilation de module noyau sur la VM
+Arpès installation du "sudo apt install linux-headers-amd64" et "sudo apt install bc". On telecharge le dossier sur Moodle et le renomme comme "module", ensuite dans VM, "ls", "cd module" et "make", puis on trouve que le fichier "hello.ko" a bien créé. 
+
+On utilise sudo modinfo hello.ko pour voir les informations :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/f678f456-36bc-433e-b135-02502160a868)
+
+On utilise sudo lsmod pour lister les modules chargés : 
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/f1cf7416-d806-4ee5-9f00-c267a9e61078)
+
+-utilisation de paramètres au chargement du module
+Pour l'utilisation de paramètres au chargement du module, on a mis le paramètre = 3 dans le code hello.c, ensuite on a récupéré le paramètre de ce module  = 0. Puis on a utilisé "sudo insmod hello.ko param = 2" pour changer le paramètre à 2. Avec "sudo dmesg", on peut voir le résultat de parmètre et toutes les affichages:
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/a1f39e7b-be52-42db-849c-bc
+
+-création d’un entrée dans /proc
+
+
+
 
 
 
