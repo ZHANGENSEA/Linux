@@ -132,6 +132,38 @@ Pour créer les variables CROSS_COMPILE et ARCH ce que on utilise dans prepare e
 
 — Pourquoi le chemin fini par un tiret "-" ?
 
+à la fin, on refait pour le timer_module.c dans le dossier module2, et on l'appele par la carte via le terminal :
+D'abord, on modifie la 1e ligne dans le file Makefile à "obj-m:=timer_module.o", ensuite on le compile par "make", et on trouve le file "timer_module.ko" dans le dossier, et puis on copie le "timer_module.ko" dans la carte par "scp timer_module.ko root@192.168.88.55" :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/e7875d3c-ecb1-4049-bcf0-d91bbb28c577)
+
+après le compile, on utilise "insmod timer_module.ko" dans le terminal (avec la carte) et "dmesg" pour tester et voir le résultat de timer:
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/de52b698-b28b-44f8-97ef-db6ffb69087f)
+
+
+3 Device tree (TP3)
+
+On installe le Device Tree et modifie l'entrée 'ledr', ensuite compile le fichier .dts en un fichier .dtb par le commande "dtc -O dtb -o soc_system.dtb soc_system.dts"
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/16453c23-91b9-4099-8da6-683b9abba883)
+
+sur la VEEK, pour accéder à la partion de boot (là où il y a le zImage), on va “monter” la partition dans le terminal:
+mkdir /root/mntboot
+mount /dev/mmcblk0p1 mntboot
+
+-dans ce répertoire /root/mntboot, renommez le fichier dtb en .old, et copiez le nouveau fichier dtb provenant du PC
+On utilise " mv soc_system.dtb soc_system.dtb.old" dans le terminal et "scp soc_system.dtb root@.....~/mntboot/" dans le VM.
+
+— rebootez la carte VEEK : reboot
+
+Et puis explore le nouveau device-tree (/proc/device-tree/sopc@0).
+Dans le terminal :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/e487a721-f864-45e5-af34-b6f688db657e)
+
+
+
+
+
+
+
 
 
 
