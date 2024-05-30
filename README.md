@@ -130,7 +130,8 @@ Puis on lance les commandes depuis le dossier /home/ensea/linux-socfpga
 — Quel est le rôle des lignes commençant par export ?
 Pour créer les variables CROSS_COMPILE et ARCH ce que on utilise dans prepare et scripts.
 
-— Pourquoi le chemin fini par un tiret "-" ?
+— Pourquoi le chemin fini par un tiret "-" 
+C'est pour éviter d'appeler uniquement gcc. En d'autres termes, cela permet d'appeler le chemin complet /usr/bin/arm-linux-gnueabihf avec le gcc.
 
 à la fin, on refait pour le timer_module.c dans le dossier module2, et on l'appele par la carte via le terminal :
 D'abord, on modifie la 1e ligne dans le file Makefile à "obj-m:=timer_module.o", ensuite on le compile par "make", et on trouve le file "timer_module.ko" dans le dossier, et puis on copie le "timer_module.ko" dans la carte par "scp timer_module.ko root@192.168.88.55" :
