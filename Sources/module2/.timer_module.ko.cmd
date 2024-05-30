@@ -1,0 +1,1 @@
+cmd_/home/ensea/src/module2/timer_module.ko := /usr/bin/arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/ensea/src/module2/timer_module.ko /home/ensea/src/module2/timer_module.o /home/ensea/src/module2/timer_module.mod.o
