@@ -96,9 +96,42 @@ On utilise sudo lsmod pour lister les modules chargés :
 
 -utilisation de paramètres au chargement du module
 Pour l'utilisation de paramètres au chargement du module, on a mis le paramètre = 3 dans le code hello.c, ensuite on a récupéré le paramètre de ce module  = 0. Puis on a utilisé "sudo insmod hello.ko param = 2" pour changer le paramètre à 2. Avec "sudo dmesg", on peut voir le résultat de parmètre et toutes les affichages:
-![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/a1f39e7b-be52-42db-849c-bc
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/e1b8958c-395f-43cd-9603-510a79371909)
 
 -création d’un entrée dans /proc
+D'abord, accès au fichiers :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/2bf90e89-49cf-406f-9a80-45144e94f592)
+
+Ensuite, on crée les fonction read et write :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/a137f751-dd59-4af8-b11e-800954431772)
+
+Oubliez pas ajouter les include et déclaration des variables :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/7878bd39-8cf6-4c80-a4a9-32aaf2f069d9)
+
+Après l'complié, on ecrit "bonjour" dans test par le command "echo "bonjour" > /proc/ensea/test" dans VM, ensuite, on utilise "sudo dmesg" et on voit le message"bonjour".
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/e0c0ed62-87ec-4121-9222-ec5e563bfe01)
+
+-utilisation d’un timer
+On ouvrte le fichier "time_module.c" et réarmer le tiler dans la fonction de gestion pour un timer périodique :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/8753140c-6e23-46e4-88a7-88fa75aec4d4)
+
+Ensuite on compile time_module.c et on voit le timer a été bien périodique.
+
+2.3 CrossCompilation de modules noyau
+
+2.3.2 Récupéreation de la configuration actuelle du noyau
+
+On décompresse le fichier config.gz dans le dossier : /home/ensea/linux-socfpga et renomme le en .config par le commande "gunzip config.gz" et "mv config .config" :
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/7449d7f4-362d-41d9-a25e-799cc166967d)
+
+Puis on lance les commandes depuis le dossier /home/ensea/linux-socfpga
+![image](https://github.com/ZHANGENSEA/Linux/assets/149954066/1da5a55f-eeb9-4975-a94a-da69c213ad53)
+
+— Quel est le rôle des lignes commençant par export ?
+Pour créer les variables CROSS_COMPILE et ARCH ce que on utilise dans prepare et scripts.
+
+— Pourquoi le chemin fini par un tiret "-" ?
+
 
 
 
